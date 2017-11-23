@@ -36,7 +36,7 @@
     "cordova-plugin-app-preferences": "^0.99.3",
     "cordova-plugin-device": "^1.1.4",
     "cordova-plugin-geolocation": "^3.0.0",
-    "cordova-plugin-googlemaps": "^2.1.1",
+    "cordova-plugin-googlemaps": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#multiple_maps",
     "cordova-plugin-googlemaps-sdk": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git",
     "cordova-plugin-inappbrowser": "^1.7.2",
     "cordova-plugin-ionic-webview": "^1.1.16",
@@ -61,21 +61,21 @@
   "description": "An Ionic project",
   "cordova": {
     "plugins": {
+      "ionic-plugin-keyboard": {},
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-ionic-webview": {},
       "cordova-plugin-googlemaps": {
         "API_KEY_FOR_ANDROID": "AIzaSyAfTxbeKS6UUeIoVrom_foTdISrRDfivP4",
         "API_KEY_FOR_IOS": "AIzaSyAfTxbeKS6UUeIoVrom_foTdISrRDfivP4",
         "LOCATION_WHEN_IN_USE_DESCRIPTION": "Show your location on the map",
         "LOCATION_ALWAYS_USAGE_DESCRIPTION": "Trace your location on the map"
-      },
-      "ionic-plugin-keyboard": {},
-      "cordova-plugin-whitelist": {},
-      "cordova-plugin-device": {},
-      "cordova-plugin-splashscreen": {},
-      "cordova-plugin-ionic-webview": {}
+      }
     },
     "platforms": [
-      "android",
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }

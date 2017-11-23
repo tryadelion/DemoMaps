@@ -35,7 +35,7 @@ export class HomePage {
 
   onMarkerClick(params: any[]) {
     this.clearLast();
-    let marker: Marker = <Marker>params.pop();
+    let marker:Marker = <Marker> params.pop();
     console.log(marker);
     var image = {
       url: "assets/img/farmselect.png",
@@ -44,15 +44,33 @@ export class HomePage {
         height: 32
       }
     }
-    marker.setIcon(image);
+    marker.setIcon(image)
     let html: string =
-      '<div class="infowindowContent">' +
-      '<h3>TEST WINDOW</h3>' +
+      '<div onclick="javascript:alert(\'hi\´)" id="marker-'+marker.get("content").IdFarmacia+'" class="infowindowContent">' +
+      '<h3>Farmacia ' + marker.get("farmaId") + '</h3>' +
       '<br />' +
-      '<p>Lorem ipsum<br />667733<br /> TEST IPSUM</p>' +
-      '<img class="colImg" src="assets/img/farmacia.png"/>' +
+      '<p>Lorem ipsum<br />667733<br /> De dilluns a divendres</p>' +
+      '<img class="colImg" src="assets/img/clusterer.png"/>' +
       '</div>';
     this.htmInfoWindow.setContent(html);
+    this.htmInfoWindow.one(GoogleMapsEvent.INFO_OPEN).then((res) => {
+      //alert("hi open infowindow");
+      var el = document.getElementById("marker-"+marker.get("content").IdFarmacia);
+      console.log("THE ELEMENT",el);
+      if (el != null && el != undefined) {
+        el.removeEventListener("click", ()=>{
+          
+        });
+        el.addEventListener("click",()=>{
+          console.log("CLICKED");
+          alert('hi');
+        });
+      }
+      
+    });
+
+    
+
     this.htmInfoWindow.open(marker);
     this.lastMarker = marker;
   }
