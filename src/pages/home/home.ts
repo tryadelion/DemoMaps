@@ -46,31 +46,13 @@ export class HomePage {
     }
     marker.setIcon(image)
     let html: string =
-      '<div onclick="javascript:alert(\'hi\´)" id="marker-'+marker.get("content").IdFarmacia+'" class="infowindowContent">' +
+      '<div onClick="javascript:alert(\'hi\´)" class="infowindowContent">' +
       '<h3>Farmacia ' + marker.get("farmaId") + '</h3>' +
       '<br />' +
       '<p>Lorem ipsum<br />667733<br /> De dilluns a divendres</p>' +
       '<img class="colImg" src="assets/img/clusterer.png"/>' +
       '</div>';
     this.htmInfoWindow.setContent(html);
-    this.htmInfoWindow.one(GoogleMapsEvent.INFO_OPEN).then((res) => {
-      //alert("hi open infowindow");
-      var el = document.getElementById("marker-"+marker.get("content").IdFarmacia);
-      console.log("THE ELEMENT",el);
-      if (el != null && el != undefined) {
-        el.removeEventListener("click", ()=>{
-          
-        });
-        el.addEventListener("click",()=>{
-          console.log("CLICKED");
-          alert('hi');
-        });
-      }
-      
-    });
-
-    
-
     this.htmInfoWindow.open(marker);
     this.lastMarker = marker;
   }
