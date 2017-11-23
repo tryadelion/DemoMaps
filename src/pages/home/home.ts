@@ -46,7 +46,7 @@ export class HomePage {
     }
     marker.setIcon(image)
     let html: string =
-      '<div onClick="javascript:alert(\'hi\´)" class="infowindowContent">' +
+      '<div onClick="javascript:alert(\'hi\')" class="infowindowContent">' +
       '<h3>Farmacia ' + marker.get("farmaId") + '</h3>' +
       '<br />' +
       '<p>Lorem ipsum<br />667733<br /> De dilluns a divendres</p>' +
