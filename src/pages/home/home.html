@@ -7,8 +7,39 @@
 </ion-header>
 
 <ion-content>
-    <ion-fab right bottom>
-      <button ion-fab big color="primary"><ion-icon name="md-locate"></ion-icon></button>
-    </ion-fab>
-  <div id="map_canvas"></div>
+  <div id="map_canvas">
+    <div id="panic" [ngClass]="{'iphonex': iphoneX === true}" >
+        <button ion-button  id="panicButton" color="light" (click)="showError('TEST BUTTON')">
+            <ion-icon class="panicIcon" name="md-warning" color="primary" item-start></ion-icon>
+            button to click
+          </button>
+    </div> 
+  </div>
+  <div *ngIf="selected != null" id="detailWindow" [ngClass]="{'iphonex': iphoneX === true}" >
+    <ion-card mode="md" id="detailContent">
+        <button ion-button clear id="settingsButton" (click)="closeDetail()"><ion-icon color="secondary" name="md-close"></ion-icon></button>
+      <ion-card-content  mode="md">
+          <h2 class="selectedTitle" *ngIf="selected.realName != ''" >{{selected.realName}}</h2>
+          <p><span *ngIf="selected.name != ''">{{selected.name}}</span><br />
+          <span  *ngIf="selected.postalCode != ''">{{selected.postalCode}}</span>
+          <span  *ngIf="selected.locality != ''">{{selected.locality}}</span><br />
+          <span  *ngIf="selected.administrativeArea != ''">{{selected.administrativeArea}}</span>
+          <span *ngIf="selected.country != ''">{{selected.country}}</span></p>
+      </ion-card-content>
+      <ion-row  mode="md">
+          <ion-col  mode="md">
+            <button  mode="md" ion-button icon-left clear small (click)="showError('TEST BUTTON')">
+              <ion-icon class="panicIcon" name="md-walk"></ion-icon>
+              <div>route</div>
+            </button>
+          </ion-col>
+          <ion-col  mode="md">
+            <button  mode="md" ion-button icon-left clear small (click)="showError('TEST BUTTON')">
+              <ion-icon class="panicIcon" name="md-information-circle"></ion-icon>
+              <div>info</div>
+            </button>
+          </ion-col>
+        </ion-row>
+    </ion-card>
+  </div>
 </ion-content>
